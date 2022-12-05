@@ -61,9 +61,9 @@ const objectToCSVRow = (dataObject) => {
     
     for(let i=0; i<21; i++){
       //Retrieve the x, y, z points of each landmark 
-      const xVal = objArr.multiHandLandmarks[0][i].x;
-      const yVal = objArr.multiHandLandmarks[0][i].y;
-      const zVal = objArr.multiHandLandmarks[0][i].z;
+      const xVal = objArr.multiHandWorldLandmarks[0][i].x;
+      const yVal = objArr.multiHandWorldLandmarks[0][i].y;
+      const zVal = objArr.multiHandWorldLandmarks[0][i].z;
       //Push the points to an array reducing to 6 decimal points 
       coordinates.push([parseFloat(xVal), parseFloat(yVal), parseFloat(zVal)]);
     }
@@ -328,17 +328,17 @@ const objectToCSVRow = (dataObject) => {
       canvasElement.height
     );
 
-    if(results.multiHandLandmarks){
+    if(results.multiHandWorldLandmarks){
       
-      for(const landmarks of results.multiHandLandmarks) {
+      for(const landmarks of results.multiHandWorldLandmarks) {
         drawConnectors(canvasCtx, landmarks, hands.HAND_CONNECTIONS,
           {color: "#00FF00", lineWidth: 2});
         drawLandmarks(canvasCtx, landmarks, {color: "#00ffd0", lineWidth: 1});//#5d0db8 purple
       
       }
-      const x = results.multiHandLandmarks[0][0].x;
-      const y = results.multiHandLandmarks[0][0].y;
-      const z = results.multiHandLandmarks[0][0].z;
+      const x = results.multiHandWorldLandmarks[0][0].x;
+      const y = results.multiHandWorldLandmarks[0][0].y;
+      const z = results.multiHandWorldLandmarks[0][0].z;
       
       setDigit_x(x);
       setDigit_y(y);
